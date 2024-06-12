@@ -4,6 +4,7 @@ from turtle import Turtle
 class Briks(Turtle):
     def __init__(self):
         super().__init__()
+        self.brick_list = []
         self.init_board()
         self.hideturtle()
 
@@ -25,8 +26,11 @@ class Briks(Turtle):
                 bricks = Turtle()
                 self.put_bricks(bricks, coordx, coordy, color[i])
                 coordx += 65
+                self.brick_list.append(bricks)
             coordy += 30
 
+    def total_bricks(self):
+        return self.brick_list
 
 if __name__ == "__main__":
     bricks = Briks()

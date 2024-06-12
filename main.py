@@ -18,14 +18,14 @@ ball = Ball()
 bricks = Briks()
 paddle = Paddle((0, -300))
 screen.update()
-
+all_bricks = bricks.total_bricks()
 
 # Movimiento de la pala
 screen.listen()
 screen.onkey(fun=paddle.go_to_left, key="Left")
 screen.onkey(fun=paddle.go_to_right, key="Right")
 # screen.update()
-
+cont = 0
 
 game_is_on = True
 while game_is_on:
@@ -42,13 +42,19 @@ while game_is_on:
         ball.collision_ceiling()
 
     # Detected collision with paddle
-    if (ball.distance(paddle) < 50 and ball.xcor() > -465) or (ball.distance(paddle) < 50 and ball.xcor() > 465):
+    if ball.distance(paddle) < 50 and ball.ycor() < -275:
         ball.collision_paddle()
 
-    if ball.distance(bricks) < 20:
-        print("Collision brick")
-        ball.collision_brick()
-
+    # Elimina el bloque contra el que colisionó
+    for one_brick in all_bricks:
+        if ball.distance(one_brick) < 30:
+            print(one_brick)
+            print("Collision brick", cont)
+            cont += 1
+            all_bricks.remove(one_brick)
+            one_brick.reset()
+            print(len(all_bricks))
+            ball.collision_brick()
 
 
 screen.exitonclick()

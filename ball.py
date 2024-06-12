@@ -11,7 +11,8 @@ class Ball(Turtle):
         self.penup()
         self.x_move = 10
         self.y_move = 10
-        self.ball_sleep = 0.1  # velocidad de la bola
+        self.ball_sleep = 0.07
+        # self.ball_sleep = 0.1  # velocidad de la bola
 
     def ball_move(self):
         x_cor = self.xcor() - self.x_move
@@ -33,5 +34,5 @@ class Ball(Turtle):
         # self.ball_sleep *= 0.9
 
     def collision_brick(self):
-        self.y_move *= 1
+        self.y_move *= -1
         # self.ball_sleep *= 0.9
