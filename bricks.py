@@ -15,22 +15,36 @@ class Briks(Turtle):
         new_turtle.color(color)
         new_turtle.goto((coordx, coordy))
 
+    # def init_board(self):
+    #     coordy = 30
+    #     # color = ["yellow", "yellow", "green", "green", "orange", "orange", "red", "red"]
+    #     # color = ["#F5DD61", "#F5DD61", "#9ADE7B", "#9ADE7B", "#FF6D60", "#FF6D60", "#D61355", "#D61355"]
+    #     color = ["#FCE22A", "#FCE22A", "#81B214", "#81B214", "#F94A29", "#F94A29", "#D61355", "#D61355"]
+    #     for i in range(8):
+    #         coordx = -425
+    #         for _ in range(14):
+    #             bricks = Turtle()
+    #             self.put_bricks(bricks, coordx, coordy, color[i])
+    #             coordx += 65
+    #             self.brick_list.append(bricks)
+    #         coordy += 30
     def init_board(self):
         coordy = 30
-        color = ["yellow", "yellow", "green", "green", "orange", "orange", "red", "red"]
+        # color = ["yellow", "yellow", "green", "green", "orange", "orange", "red", "red"]
         # color = ["#F5DD61", "#F5DD61", "#9ADE7B", "#9ADE7B", "#FF6D60", "#FF6D60", "#D61355", "#D61355"]
-        # color = ["#FCE22A", "#FCE22A", "#81B214", "#81B214", "#F94A29", "#F94A29", "#D61355", "#D61355"]
-        for i in range(8):
-            coordx = -425
-            for _ in range(14):
-                bricks = Turtle()
-                self.put_bricks(bricks, coordx, coordy, color[i])
-                coordx += 65
-                self.brick_list.append(bricks)
-            coordy += 30
+        color = ["#FCE22A", "#FCE22A", "#81B214", "#81B214", "#F94A29", "#F94A29", "#D61355", "#D61355"]
+        # for i in range(8):
+        coordx = -360
+        for _ in range(2):
+            bricks = Turtle()
+            self.put_bricks(bricks, coordx, coordy, "#D61355")
+            coordx += 65
+            self.brick_list.append(bricks)
+        coordy += 30
 
     def total_bricks(self):
         return self.brick_list
+
 
 if __name__ == "__main__":
     bricks = Briks()
