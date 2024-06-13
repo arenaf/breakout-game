@@ -5,10 +5,6 @@ from bricks import Briks
 from scoreboard import Scoreboard
 import time
 
-# Pingpong
-# Turtle crossing game
-
-
 screen = Screen()
 screen.setup(height=650, width=930)
 screen.bgcolor("black")
@@ -16,21 +12,16 @@ screen.title("Breakout Game")
 screen.tracer(0) # desactiva la animación de pantalla para que los segmentos se vean todos juntos
 
 scoreboard = Scoreboard()
-# score = scoreboard.create_score()
-# level = scoreboard.create_level()
 bricks = Briks()
 all_bricks = bricks.total_bricks()
 paddle = Paddle((0, -300))
 ball = Ball()
 screen.update()
 
-
-# Movimiento de la pala
+# Movimiento de la pala con teclado
 screen.listen()
 screen.onkey(fun=paddle.go_to_left, key="Left")
 screen.onkey(fun=paddle.go_to_right, key="Right")
-# screen.update()
-# cont = 0
 
 game_is_on = True
 while game_is_on:
@@ -38,32 +29,31 @@ while game_is_on:
     screen.update()
     ball.ball_move()
 
-    # Detected collision with walls
+    # Detecta colisión con la pared
     if ball.xcor() > 450 or ball.xcor() < -450:
         ball.collision_wall()
 
-    # Detected collision with ceiling
+    # Detecta colisión con el techo
     if ball.ycor() > 315:
         ball.collision_ceiling()
 
-    # Detected collision with paddle
+    # Detecta colisión con la pala
     if ball.distance(paddle) < 50 and ball.ycor() < -275:
         ball.collision_paddle()
 
     if ball.ycor() < -330:
         scoreboard.game_over()
-
+        game_is_on = False
 
     # Elimina el bloque contra el que colisionó
     for one_brick in all_bricks:
         if ball.distance(one_brick) < 30:
-            # print("Collision brick", cont)
-            # cont += 1
             all_bricks.remove(one_brick)
             one_brick.reset()
             ball.collision_brick()
             scoreboard.new_score()
 
+    # Sube de nivel
     if all_bricks == []:
         ball.new_level()
         bricks = Briks()
@@ -72,8 +62,3 @@ while game_is_on:
 
 
 screen.exitonclick()
-
-
-
-# TODO 3: poder reiniciar partida
-# TODO : data high score

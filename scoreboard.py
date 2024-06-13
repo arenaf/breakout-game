@@ -12,11 +12,11 @@ class Scoreboard(Turtle):
         self.score = 0
         self.level = 1
         try:
-            with open("data.txt") as file:
+            with open("data.txt") as file: # Archivo que guarda el nivel más alto alcanzado
                 self.high_level = int(file.read())
         except FileNotFoundError:
             with open("data.txt", "w") as file:
-                file.write("0")
+                file.write("1")
                 self.high_level = 1
         self.create_score()
 
