@@ -27,7 +27,7 @@ Cuando la bola toca algún ladrillo, éste desaparece de pantalla.
 ![level1](https://github.com/arenaf/breakout-game/assets/169451601/770a9655-5272-4fe9-a569-36d50eba4683)
 
 
-Si el jugador consigue sacar todos los ladrillos de pantalla, se pasa al siguiente nivel. Cuanto mayor sea el nivel, la bola irá más rápido.
+Si el jugador consigue sacar todos los ladrillos de la pantalla, se pasa al siguiente nivel. Cuanto mayor sea el nivel, la bola irá más rápido.
 
 Si la bola cae al suelo, el jugador pierde y se acaba la partida.
 
